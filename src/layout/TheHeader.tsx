@@ -3,13 +3,16 @@ import { Link, NavLink } from "react-router-dom";
 
 function TheHeader() {
     return (
-        <header>
-            <Link to="/">ju-nong</Link>
+        <header className="flex px-4 items-center">
+            <div className="w-[calc(100vw/4)] leading-[48px]">
+                <Link to="/" className="inline-block h-full">
+                    ju-nong
+                </Link>
+            </div>
 
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
+            <ul className="flex-1 flex gap-x-4 leading-[48px] ">
+                <NavLink to="/repositories">Repositories</NavLink>
+                <NavLink to="/stars">Stars</NavLink>
             </ul>
         </header>
     );

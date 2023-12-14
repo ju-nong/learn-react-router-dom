@@ -8,3 +8,14 @@
     border: 0;
     box-sizing: border-box;
 }
+
+header {
+    a {
+        padding: 0px 8px;
+        border-bottom: 2px solid transparent;
+
+        &.active {
+            border-bottom-color: #fd8c73;
+        }
+    }
+}
