@@ -1,13 +1,11 @@
-import { RouterProvider } from "react-router-dom";
-import router from "./router";
-
 import { TheHeader } from "./layout";
+import { Outlet } from "react-router-dom";
 
 function App() {
     return (
         <>
             <TheHeader />
-            <RouterProvider router={router} />
+            <Outlet />
         </>
     );
 }
