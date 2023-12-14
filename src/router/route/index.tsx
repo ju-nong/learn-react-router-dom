@@ -1,18 +1,16 @@
 import type { RouteObject } from "react-router-dom";
 
 import App from "../../App";
-import { Home } from "../../pages/main";
+
+import home from "./home";
+import repositories from "./repositories";
+import stars from "./stars";
 
 const routes: RouteObject[] = [
     {
         path: "/",
         element: <App />,
-        children: [
-            {
-                path: "",
-                element: <Home />,
-            },
-        ],
+        children: [...home, ...repositories, ...stars],
     },
 ];
 
