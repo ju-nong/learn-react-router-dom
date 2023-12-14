@@ -1,11 +1,14 @@
-import { Outlet } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
+import router from "./router";
+
+import { TheHeader } from "./layout";
 
 function App() {
     return (
-        <div className="text-center">
-            Hello World!
-            <Outlet />
-        </div>
+        <>
+            <TheHeader />
+            <RouterProvider router={router} />
+        </>
     );
 }
 
