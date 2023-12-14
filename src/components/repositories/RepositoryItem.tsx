@@ -30,7 +30,7 @@ function RepositoryItem({
         <li className="py-4">
             <Link
                 className="text-[20px] font-semibold text-[#0969da] hover:underline mr-2"
-                to="/"
+                to={`/repositories/${name}`}
             >
                 {name}
             </Link>
