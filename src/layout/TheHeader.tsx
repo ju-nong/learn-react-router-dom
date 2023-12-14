@@ -3,9 +3,9 @@ import { Link, NavLink } from "react-router-dom";
 
 function TheHeader() {
     return (
-        <header className="flex px-4 items-center">
+        <header className="flex px-4 items-center bg-[#f6f8fa]">
             <div className="w-[calc(100vw/4)] leading-[48px]">
-                <Link to="/" className="inline-block h-full">
+                <Link to="/" className="inline-block h-full font-semibold">
                     ju-nong
                 </Link>
             </div>

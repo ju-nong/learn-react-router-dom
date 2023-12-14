@@ -10,7 +10,9 @@
 }
 
 header {
+    border-bottom: 2px solid #d8dee4;
     a {
+        margin-bottom: -2px;
         padding: 0px 8px;
         border-bottom: 2px solid transparent;
 
@@ -18,4 +20,10 @@ header {
             border-bottom-color: #fd8c73;
         }
     }
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0px 20px;
 }
