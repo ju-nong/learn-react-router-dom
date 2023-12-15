@@ -1,7 +1,9 @@
 import React from "react";
 
-import { RepositoryItem } from "../../components/repositories";
-import type { RepositoryItemProps } from "../../components/repositories";
+import {
+    RepositoryItem,
+    RepositoryItemProps,
+} from "../../components/repositories";
 
 const repositories: RepositoryItemProps[] = [
     {
