@@ -5,17 +5,19 @@ function Detail() {
         name: string;
     }>();
 
+    const { name } = params;
+
     return (
         <div className="pt-4">
             <Link
                 className="text-[20px] font-semibold hover:underline"
-                to={`/repositories/${params.name}`}
+                to={`/repositories/${name}`}
             >
-                {params.name}
+                {name}
             </Link>
 
             <a
-                href={`https://github.com/ju-nong/${params.name}`}
+                href={`https://github.com/ju-nong/${name}`}
                 target="_blank"
                 className="text-center w-full block"
             >
