@@ -1,5 +1,4 @@
-import RepositoryItem from "./RepositoryItem";
-import type { RepositoryItemProps } from "./RepositoryItem";
+import RepositoryItem, { RepositoryItemProps } from "./RepositoryItem";
 
 export { RepositoryItem };
 
