@@ -28,6 +28,15 @@ main {
     padding: 0px 20px;
 }
 
+.list-container {
+    > li {
+        border-bottom: 1px solid #d7d8db;
+        &:last-child {
+            border-bottom: 0px;
+        }
+    }
+}
+
 .stars-container {
     button,
     details > summary {
