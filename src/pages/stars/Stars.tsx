@@ -13,20 +13,6 @@ async function fetchStars(): Promise<StarItemProps[]> {
     return await reponse.json();
 }
 
-// function test() {
-//     <div className="flex gap-x-3">
-//         <div className="flex gap-x-2 flex-grow-[1]">
-//             <input clas />
-//             <button>Search</button>
-//         </div>
-//         <div className="flex gap-x-2">
-//             <button>Type</button>
-//             <button>Language</button>
-//             <button>Sort</button>
-//         </div>
-//     </div>;
-// }
-
 function Stars() {
     const [searchParams, setSearchParams] = useSearchParams();
 
