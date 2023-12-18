@@ -8,7 +8,7 @@ const routes: RouteObject[] = [
         element: <Stars />,
     },
     {
-        path: "stars/:name",
+        path: "stars/:owner/:name",
         element: <Detail />,
     },
 ];

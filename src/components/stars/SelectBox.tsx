@@ -36,8 +36,8 @@ function SelectBox({ name, list = [], onClick }: SelectBoxProps) {
 
     return (
         <details open={open} ref={$details}>
-            <summary onClick={handleToggle}>
-                {name}
+            <summary onClick={handleToggle} className="whitespace-nowrap">
+                {name}: {list.filter((item) => item.active)[0].label}
                 <svg
                     fill="#656d76"
                     aria-hidden="true"

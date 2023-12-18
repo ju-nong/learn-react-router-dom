@@ -39,12 +39,12 @@ function SelectBoxContainer({ onClick }: SelectBoxContainerProps) {
                 },
                 {
                     label: "JavaScript",
-                    value: "javaScript",
+                    value: "JavaScript",
                     active: false,
                 },
                 {
                     label: "TypeScript",
-                    value: "typeScript",
+                    value: "TypeScript",
                     active: false,
                 },
             ],
@@ -94,7 +94,7 @@ function SelectBoxContainer({ onClick }: SelectBoxContainerProps) {
     }
 
     return (
-        <div className="inline-flex gap-2 flex-wrap">
+        <div className="inline-flex gap-2 w-full">
             {selectBoxes.map((selectBox, _index) => (
                 <SelectBox
                     {...selectBox}

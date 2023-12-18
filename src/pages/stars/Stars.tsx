@@ -13,23 +13,62 @@ async function fetchStars(): Promise<StarItemProps[]> {
     return await reponse.json();
 }
 
+// function test() {
+//     <div className="flex gap-x-3">
+//         <div className="flex gap-x-2 flex-grow-[1]">
+//             <input clas />
+//             <button>Search</button>
+//         </div>
+//         <div className="flex gap-x-2">
+//             <button>Type</button>
+//             <button>Language</button>
+//             <button>Sort</button>
+//         </div>
+//     </div>;
+// }
+
 function Stars() {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const [loaded, setLoaded] = useState(false);
     const [stars, setStars] = useState<StarItemProps[]>([]);
 
-    const [keyword, setKeyword] = useState("");
-    const searched = useMemo(
-        () =>
-            stars.filter(
+    const searched = useMemo(() => {
+        let _stars = stars;
+
+        const keyword = searchParams.get("keyword");
+        if (keyword) {
+            _stars = _stars.filter(
                 (star) =>
                     star.owner.login.includes(keyword) ||
                     star.name.includes(keyword) ||
                     star.description.includes(keyword),
-            ),
-        [stars, keyword],
-    );
+            );
+        }
+
+        const type = searchParams.get("type");
+        if (type && type !== "all") {
+            _stars = _stars.filter(() => type === "public");
+        }
+
+        const language = searchParams.get("language");
+        if (language && type !== "all") {
+            _stars = _stars.filter((star) => star.language === language);
+        }
+
+        const sort = searchParams.get("sort");
+        if (sort && sort !== "recent") {
+            if (sort === "fork") {
+                _stars = _stars.sort((a, b) => b.forks - a.forks);
+            } else {
+                _stars = _stars.sort(
+                    (a, b) => b.stargazers_count - a.stargazers_count,
+                );
+            }
+        }
+
+        return _stars;
+    }, [stars, searchParams]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -40,33 +79,30 @@ function Stars() {
         };
 
         fetchData();
-
-        const keyword = searchParams.get("keyword");
-        if (keyword) {
-            setKeyword(keyword);
-        }
     }, []);
 
     function handleSubmit(keyword: string) {
-        setKeyword(keyword);
+        const params = Object.fromEntries(searchParams.entries());
+        params.keyword = keyword;
 
-        setSearchParams((searchParams) => ({ ...searchParams, keyword }));
+        setSearchParams(params);
     }
 
     function handleSetCategory(type: string, value: string) {
-        setSearchParams((searchParams) => ({ ...searchParams, [type]: value }));
+        const params = Object.fromEntries(searchParams.entries());
+        params[type] = value;
+
+        setSearchParams(params);
     }
 
     return (
-        <main className="stars-container pt-4">
-            <div className="flex flex-wrap gap-y-2">
-                <div className="mr-4">
-                    <SearchBar onSubmit={handleSubmit} />
-                </div>
+        <div className="stars-container pt-4">
+            <div className="flex gap-x-4 gap-y-2">
+                <SearchBar onSubmit={handleSubmit} />
                 <SelectBoxContainer onClick={handleSetCategory} />
             </div>
             {loaded ? <StarList list={searched} /> : null}
-        </main>
+        </div>
     );
 }
 

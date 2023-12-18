@@ -27,8 +27,8 @@ function StarItem({
     return (
         <li className="py-4">
             <Link
+                to={`/stars/${login}/${name}`}
                 className="text-[20px] text-[#0969da] hover:underline mr-2"
-                to={`/stars/${name}`}
             >
                 {login} / <span className="font-semibold">{name}</span>
             </Link>

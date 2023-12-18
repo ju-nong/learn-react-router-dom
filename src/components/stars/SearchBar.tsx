@@ -29,8 +29,8 @@ function SearchBar({ onSubmit }: SearchBarProps) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="flex gap-x-2">
-            <div className="relative">
+        <form onSubmit={handleSubmit} className="flex gap-x-2 ">
+            <div className="relative w-full">
                 <span className="absolute pointer-events-none left-[0.5rem] top-[0.5rem] h-1 w-1">
                     <svg
                         aria-hidden="true"
@@ -47,7 +47,7 @@ function SearchBar({ onSubmit }: SearchBarProps) {
                 <input
                     type="text"
                     placeholder="Search stars"
-                    className="py-[5px] pl-[32px] pr-[8px] border rounded-md border-gray-300 border-solid h-8 focus:border-transparent outline-blue-600"
+                    className="w-full py-[5px] pl-[32px] pr-[8px] border rounded-md border-gray-300 border-solid h-8 focus:border-transparent outline-blue-600"
                     value={keyword}
                     onInput={handleInput}
                 />
