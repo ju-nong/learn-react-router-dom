@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import { useClickOutside } from "../../utils";
 
 type SelectBoxList = {
     label: string;
@@ -7,14 +8,35 @@ type SelectBoxList = {
 };
 
 type SelectBoxProps = {
+    id: string;
     name: string;
     list: SelectBoxList[];
+    onClick?: (index: number) => void;
 };
 
-function SelectBox({ name, list = [] }: SelectBoxProps) {
+function SelectBox({ name, list = [], onClick }: SelectBoxProps) {
+    const $details = useRef<HTMLDetailsElement>(null);
+    const [open, setOpen] = useState(false);
+
+    useClickOutside($details, () => setOpen(false));
+
+    function handleToggle(event: React.MouseEvent<HTMLDetailsElement>) {
+        event.preventDefault();
+
+        setOpen((open) => !open);
+    }
+
+    function handleClick(index: number) {
+        setOpen(false);
+
+        if (onClick) {
+            onClick(index);
+        }
+    }
+
     return (
-        <details>
-            <summary>
+        <details open={open} ref={$details}>
+            <summary onClick={handleToggle}>
                 {name}
                 <svg
                     fill="#656d76"
@@ -29,8 +51,8 @@ function SelectBox({ name, list = [] }: SelectBoxProps) {
                 </svg>
             </summary>
             <ul>
-                {list.map(({ label, value, active }) => (
-                    <li key={value}>
+                {list.map(({ label, value, active }, index) => (
+                    <li key={value} onClick={() => handleClick(index)}>
                         <svg
                             aria-hidden="true"
                             height="16"

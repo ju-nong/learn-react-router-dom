@@ -53,13 +53,17 @@ function Stars() {
         setSearchParams((searchParams) => ({ ...searchParams, keyword }));
     }
 
+    function handleSetCategory(type: string, value: string) {
+        setSearchParams((searchParams) => ({ ...searchParams, [type]: value }));
+    }
+
     return (
         <main className="stars-container pt-4">
             <div className="flex flex-wrap gap-y-2">
                 <div className="mr-4">
                     <SearchBar onSubmit={handleSubmit} />
                 </div>
-                <SelectBoxContainer />
+                <SelectBoxContainer onClick={handleSetCategory} />
             </div>
             {loaded ? <StarList list={searched} /> : null}
         </main>
