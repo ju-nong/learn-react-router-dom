@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
-function SearchBar() {
+type SearchBarProps = {
+    onSubmit: (keyword: string) => void;
+};
+
+function SearchBar({ onSubmit }: SearchBarProps) {
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const [keyword, setKeyword] = useState("");
+
+    useEffect(() => {
+        const keyword = searchParams.get("keyword");
+
+        if (keyword) {
+            setKeyword(keyword);
+        }
+    }, []);
+
+    function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
+        setKeyword(event.target.value);
+    }
+
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        alert("안녕하세요");
+        onSubmit(keyword);
     }
 
     return (
@@ -27,6 +48,8 @@ function SearchBar() {
                     type="text"
                     placeholder="Search stars"
                     className="py-[5px] pl-[32px] pr-[8px] border rounded-md border-gray-300 border-solid h-8 focus:border-transparent outline-blue-600"
+                    value={keyword}
+                    onInput={handleInput}
                 />
             </div>
             <button>Search</button>

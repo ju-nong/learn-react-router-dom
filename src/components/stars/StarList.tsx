@@ -10,7 +10,7 @@ function StarList({ list }: StarListProps) {
     return (
         <ul className="list-container">
             {list.length ? (
-                list.map((star) => <StarItem {...star} />)
+                list.map((star) => <StarItem {...star} key={star.id} />)
             ) : (
                 <div className="text-center mt-8 p-8 font-semibold text-lg">
                     That’s it. You’ve reached the end of your stars.

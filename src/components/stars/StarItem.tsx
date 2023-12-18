@@ -5,6 +5,7 @@ import LanguageDot from "../LanguageDot";
 import { Language } from "../../types";
 
 type StarItemProps = {
+    id: number;
     owner: {
         login: string;
     };
