@@ -1,9 +1,15 @@
 import React from "react";
 
 function SearchBar() {
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        alert("안녕하세요");
+    }
+
     return (
-        <div className="flex gap-x-2">
-            <div className="relative ">
+        <form onSubmit={handleSubmit} className="flex gap-x-2">
+            <div className="relative">
                 <span className="absolute pointer-events-none left-[0.5rem] top-[0.5rem] h-1 w-1">
                     <svg
                         aria-hidden="true"
@@ -24,7 +30,7 @@ function SearchBar() {
                 />
             </div>
             <button>Search</button>
-        </div>
+        </form>
     );
 }
 

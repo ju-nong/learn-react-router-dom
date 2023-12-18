@@ -51,13 +51,13 @@ const selectBoxes: SelectBoxProps[] = [
                 active: true,
             },
             {
-                label: "Recently active",
-                value: "active",
+                label: "Most forks",
+                value: "fork",
                 active: false,
             },
             {
                 label: "Most stars",
-                value: "most",
+                value: "star",
                 active: false,
             },
         ],
@@ -68,7 +68,7 @@ function SelectBoxContainer() {
     return (
         <div className="inline-flex gap-x-2">
             {selectBoxes.map((selectBox) => (
-                <SelectBox {...selectBox} />
+                <SelectBox {...selectBox} key={selectBox.name} />
             ))}
         </div>
     );
